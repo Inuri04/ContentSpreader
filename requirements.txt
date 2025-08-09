@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+python-multipart
+moviepy
+openai-whisper
+transformers
+torch
+jinja2

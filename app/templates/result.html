@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Ergebnisse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+    function copyText(id) {
+        const text = document.getElementById(id).value;
+        navigator.clipboard.writeText(text);
+    }
+    </script>
+</head>
+<body class="container py-5">
+    <h1 class="mb-4">Generierte Inhalte</h1>
+
+    <h2>Zusammenfassung</h2>
+    <textarea id="summary" class="form-control" rows="6">{{ summary }}</textarea>
+    <button class="btn btn-secondary mt-2" onclick="copyText('summary')">Kopieren</button>
+
+    <h2 class="mt-4">LinkedIn-Post</h2>
+    <textarea id="linkedin" class="form-control" rows="6">{{ linkedin_post }}</textarea>
+    <button class="btn btn-secondary mt-2" onclick="copyText('linkedin')">Kopieren</button>
+
+    <h2 class="mt-4">Twitter-Thread</h2>
+    {% for tweet in twitter_thread %}
+        <textarea id="tweet{{ loop.index }}" class="form-control mb-2" rows="3">{{ tweet }}</textarea>
+        <button class="btn btn-secondary mb-3" onclick="copyText('tweet{{ loop.index }}')">Kopieren</button>
+    {% endfor %}
+
+    <h2 class="mt-4">Newsletter</h2>
+    <textarea id="newsletter" class="form-control" rows="8">{{ newsletter }}</textarea>
+    <button class="btn btn-secondary mt-2" onclick="copyText('newsletter')">Kopieren</button>
+
+    <div class="mt-4">
+        <a href="/" class="btn btn-link">Neues Video verarbeiten</a>
+    </div>
+</body>
+</html>
